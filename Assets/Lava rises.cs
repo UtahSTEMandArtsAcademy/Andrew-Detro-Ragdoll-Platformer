@@ -10,14 +10,14 @@ public class Lavarises : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         lavaRise -= Time.deltaTime;
-        if(lavaRise <= 0)
+        if (lavaRise <= 0)
         {
             rising = true;
         }
@@ -26,6 +26,6 @@ public class Lavarises : MonoBehaviour
         {
             transform.position += new Vector3(0, speed * Time.deltaTime, 0);
         }
-        
+
     }
 }
