@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public bool CanJump;
     public Transform cam;
+    public Tracker tracker;
+    public GameObject[] AlfredBodyParts;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 10000;
         }
+
+        if(transform.position.y < -15)
+        {
+            Respawn();
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -55,5 +62,13 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         CanJump = false;
+    }
+    void Respawn()
+    {
+        foreach(GameObject n in AlfredBodyParts)
+        {
+            n.SetActive(true);
+        }
+        transform.position = tracker.Location;
     }
 }

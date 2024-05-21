@@ -9,7 +9,7 @@ public class Death : MonoBehaviour
     {
         GameObject clone;
         clone = Instantiate(PS, other.gameObject.transform.position, other.gameObject.transform.rotation);
-        Destroy(other.gameObject);
+        other.gameObject.SetActive(false);
         Destroy(clone, 3f);
     }
 }
