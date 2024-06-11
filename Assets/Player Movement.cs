@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public bool CanJump;
     public Transform cam;
-    public Tracker tracker;
-    public GameObject[] AlfredBodyParts;
+    public Tracker tracker, death_height;
+
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody>();
-
+        transform.position = tracker.Location;
     }
 
     // Update is called once per frame
@@ -50,9 +51,14 @@ public class PlayerMovement : MonoBehaviour
             speed = 10000;
         }
 
-        if(transform.position.y < -15)
+        if(transform.position.y < death_height.Location.y)
         {
-            Respawn();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            tracker.Location = new Vector3(0f, -9f, 0f);
         }
     }
     private void OnTriggerStay(Collider other)
@@ -63,12 +69,5 @@ public class PlayerMovement : MonoBehaviour
     {
         CanJump = false;
     }
-    void Respawn()
-    {
-        foreach(GameObject n in AlfredBodyParts)
-        {
-            n.SetActive(true);
-        }
-        transform.position = tracker.Location;
-    }
+
 }

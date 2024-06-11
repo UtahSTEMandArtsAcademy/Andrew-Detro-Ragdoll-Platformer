@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b9c58478763d48758ba30822c9e6425, type: 3}
-  m_Name: Checkpoints
+  m_Name: Death Height
   m_EditorClassIdentifier: 
-  Location: {x: -28.04, y: -0.8, z: 18.158}
+  Location: {x: 0, y: -25, z: 0}

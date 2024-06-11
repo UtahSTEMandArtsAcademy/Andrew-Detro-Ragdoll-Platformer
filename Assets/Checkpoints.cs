@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Checkpoints : MonoBehaviour
 {
-    public Transform[] checkpoints;
-    // Start is called before the first frame update
-    void Start()
+    public Tracker location;
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        location.checkpoint(this.gameObject.transform.position);
     }
 }
