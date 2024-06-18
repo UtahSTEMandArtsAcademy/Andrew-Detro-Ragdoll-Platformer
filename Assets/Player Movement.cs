@@ -63,7 +63,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        CanJump = true;
+        if(other.gameObject.tag != "Jakob"){
+            CanJump = true;
+        }
+        
     }
     private void OnTriggerExit(Collider other)
     {
